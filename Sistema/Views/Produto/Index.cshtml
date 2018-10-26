@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sistema.Models.Produto>
+
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+
+<h2>Inicio</h2>
+
+<p>
+    @Html.ActionLink("Criar Produto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Descricão")
+        </th>
+        <th>
+            @Html.DisplayName("Preço")
+        </th>
+        <th>
+            @Html.DisplayName("Última Compra")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UltimaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estoque)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.produtoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.produtoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.produtoId })
+        </td>
+    </tr>
+}
+
+</table>
